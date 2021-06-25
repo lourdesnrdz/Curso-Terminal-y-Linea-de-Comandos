@@ -1,6 +1,169 @@
-# Curso Terminal y Linea de Comandos
+# Terminal and Command Line Course
 
 ## ¿Qué es la terminal?
+- **Terminal**: window that shows us the promp, this hosts the shell.
+- **Command line**: program that takes commands and passes them to the operating system to do something.
+
+## LEarning the terminal
+| Command | Description |
+| --------- | --------- |
+| ls | List the files and folders from the directory |
+| ls -l | List the diles and folders with all the info of each |
+| ls -lh | List the diles and folders with all the info of each for human reading |
+| cd | Moves the terminal to the home directory of the user |
+| cd {folder} | Moves terminal to directory |
+| clear | Cleans terminal (ctrl + l) |
+| pwd | Print Working Directory. |
+| file {name_file} | Describe the file's type |
+
+## Manipulating files and directories
+
+| Command | Description |
+| --------- | --------- |
+| ls -la | List all elements of directory, including hidden ones |
+| ls -lS | Lists elements from highest to lowest size |
+| ls -lr | Lists elements inversely |
+| tree | Show all directories in tree form |
+| tree -L {#} | Show all directories to the specified level |
+| mkdir {folder} | Creates a new directory |
+| touch {file} | Creates a new file |
+| cp {original} {copia} | Copy file |
+| mv {file} {path} | Move file to path |
+| mv {name} {new_name} | Renames file or directory |
+| rm {file} | Delete file |
+| rm -i {file} | Delete file interactively (pide confirmación) |
+| rm -r {folder} | Delete folder recursively |
+
+## File content
+
+| Command | Description |
+| --------- | --------- |
+| head {file} | Show the first 10 lines of file |
+| head {file} -n {#} | Show the first n lines of file |
+| tail {file} | Show the last 10 lines of file |
+| tail {file} -n {#} | Show the last n lines of file |
+| less {file} | Shows the file's content |
+| xdg-open | Open file |
+| nautilus | Open file system |
+
+
+## What is a command
+
+| Command | Description |
+| --------- | --------- |
+| type {command} | Show the command's category |
+| alias {alias_name}="{command}" | Creates a termporal alias for a command |
+| help {command} | Show info of how to use a command |
+| man {command} | Show command's manual |
+| info {command} | Show command's manual |
+| whatis {command} | Show a short description of command |
+
+## Wildcards
+
+| Command | Description |
+| --------- | --------- |
+| ls *{.ext} | Filter files that end with extension |
+| ls {word}* | Filter files that contain specific word |
+| ls {word}? | Filter files that contain 1 character after word |
+| ls [[:upper:]]* | Filter files and directories that start with uppercase on all the tree |
+| ls -d [[:upper:]]* | Filter files and directories that start with uppercase on current directory |
+| ls [[:lower:]]* | Filter files and directories that start with lowercase on all the tree |
+| ls -d [[:lower:]]* | Filter files and directories that start with lowercase on current directory |
+| ls [ad]* | Show files that start with `a` or `d` |
+
+## Redirections
+
+| Command | Description |
+| --------- | --------- |
+| ls {folder} > {name}.txt | Save list of files in directory in file.txt |
+| ls {folder} >> {name}.txt | If files exist, concatenates list on file.txt |
+| ls {folder} 2> {name}.txt | Redirect a stderr to file.txt |
+| ls {folder} 2>&1 {name}.txt |Redirect stdout y stderr to file.txt |
+| ls -lh \| less | Pipe operator allows a command's stdout to become the stdin of another command |
+| echo "{text}" | Print text on terminal |
+| cat {file} | Show a file's content |
+| ls -ls \| sort | Order command's output |
+| cowsay {text} | Print a cow saying the text |
+| {command} \| lolcat | Colors output of command |
+
+
+## Concatenating commands
+
+| Command | Description |
+| --------- | --------- |
+| ls; mkdir NewFolder; cal | ; chains command to run synchronously |
+| ls & date & cal | Commans are executed asynchronously |
+| mkdir test && cd test | AND, if a command executes correctly then run the other command |
+| cd test || touch file.txt | OR, executes only first command that runs correctly |
+
+## Modify permissions on terminal
+| Command | Description |
+| --------- | --------- |
+| chmod 755 {file_name} | Modifies permissions using octal mode |
+| chmod u-r {file_name} | Removes permissions using symbolic mode |
+| chmod u+r {file_name} | Gives permissions using symbolic mode |
+| whoami | Returns the name of actual user |
+| id | Groups the user belong to |
+| su root | Changes to root user |
+| sudo {command} | Gives root permissions to run command |
+| passwd | Change password of current user |
+
+## Environment variables
+
+| Command | Description |
+| --------- | --------- |
+| printenv | List environment variables |
+| echo $variable | Print the content of variable |
+
+## Search commands
+
+| Command | Description |
+| --------- | --------- |
+| which {bin} | Show path of binary |
+| find {path} -name {name} | Search file on path |
+| find {path} -type d -name {name} | Search directory on path that matches type and name |
+| find {path} -type f -name {name} | Search file on path that matches type and name |
+| find {path} -size 20M | Search on path a file with size |
+| grep {expReg} {file} | Search all coincidences inside file (case sensitive) |
+| grep -i {expReg} {file} | Search all coincidences inside file (not case sensitive)  |
+| grep -c {expReg} {file} | Count number of occurrences |
+| grep -v {expReg} {file} | Sind all non coincidences |
+| wc {file} | Count number of lines, words and bits of file |
+| wc -l {file} | Count only number of lines |
+| wc -w {file} | Count only number of words |
+| wc -c {file} | Count only number of bits |
+
+## Network utilities
+
+| Command | Description |
+| --------- | --------- |
+| ifconfig | Info of our network |
+| ping {website} | Allows detection is a site is active or not |
+| curl {website} | Return site's HTML |
+| wget {website} | Downloads site's HTML on our computer |
+| traceroute {website} | Trace route of all conexions to reach site |
+| netstat -i | Show all network devices |
+
+## Compressing files
+
+| Command | Description |
+| --------- | --------- |
+| tar -cvf {name}.tar {folder} | Compress directory or file with .tar format |
+| tar -cvzf {name}.tar.gz {folder} | Compress element with gzip |
+| tar -xvf {name} | Decompress .tar |
+| tar -xzvf {name} | Decompress gzip |
+| zip -r {name}.zip {folder} | Compress element on .zip |
+| unzip {name} | Decompress .zip |
+
+## Process management
+
+| Command | Description |
+| --------- | --------- |
+| ps | Show all processes running on terminal |
+| kill {PID} | Stops process excecution |
+| top | Show the processes using resources |
+
+<!-- ## ¿Qué es la terminal?
 - **Terminal**: es la ventanita que nos muestra el prompt. Este aloja la shell.
 - **Línea de comandos**: programa que toma comandos y los pasa al sistema operativo para hacer algo.
 
@@ -162,4 +325,4 @@
 | --------- | --------- |
 | ps | Muestra los procesos corriendo en la terminal |
 | kill {PID} | Detiene la ejecución de un proceso |
-| top | Muestra los procesos que están usando más recursos |
+| top | Muestra los procesos que están usando más recursos | -->
