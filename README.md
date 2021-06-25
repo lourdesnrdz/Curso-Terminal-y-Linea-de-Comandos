@@ -1,10 +1,10 @@
 # Terminal and Command Line Course
 
-## ¿Qué es la terminal?
+## Terminal
 - **Terminal**: window that shows us the promp, this hosts the shell.
 - **Command line**: program that takes commands and passes them to the operating system to do something.
 
-## LEarning the terminal
+## Learning the terminal
 | Command | Description |
 | --------- | --------- |
 | ls | List the files and folders from the directory |
